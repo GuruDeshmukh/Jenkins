@@ -9,7 +9,7 @@ pipeline {
 			}
 		}
 		stage ('STAGE 2') {
-			agent { label 'slave-1'
+			agent { label 'slave-1' }
 			steps {
 				sh 'sleep 20'
 			}
