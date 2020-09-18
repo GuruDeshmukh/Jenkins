@@ -2,11 +2,15 @@ pipeline {
 	agent none
 
 	stages {
+		stage ( 'C Project and Java Project') {
+			parallel {
 		stage ('C Project') {
 			agent { label 'java' }
 			steps {
 			  	git 'https://github.com/GuruDeshmukh/Jenkinsproject2.git'
 					sh 'make'
+			}
+		}
 			}
 		}
 		stage ('Java Project') {
