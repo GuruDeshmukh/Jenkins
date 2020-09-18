@@ -1,26 +1,21 @@
 pipeline {
-	agent { label 'slave-1' }
+	agent none
 
 	stages {
-		stage ('STAGE 1') {
+		stage ('C Project') {
+			agent { label 'java' }
 			steps {
-			  	sh 'sleep 20'
+			  	git 'https://github.com/GuruDeshmukh/Jenkinsproject2.git'
+					sh 'make'
 			}
 		}
-		stage ('STAGE 2') {
+		stage ('Java Project') {
+			agent { label 'java-1' }
 			steps {
-				sh 'sleep 20'
+				git 'https://github.com/GuruDeshmukh/Test-1.git'
+				sh 'mvn clean install'
 			}
 		}
-		stage ('STAGE 3') {
-			steps {
-				sh 'sleep 20'
-			}
-		}
-		stage ('STAGE 4') {
-			steps {
-				sh 'sleep 20'
-			}
-		}
+		
 	}
 }
